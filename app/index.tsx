@@ -12,8 +12,6 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import { useScanStore } from '../store/scanStore';
 import { vlmRunService } from '../services/vlmrun';
-import * as ImagePicker from 'expo-image-picker';
-
 type CameraType = 'front' | 'back';
 const { CameraView, useCameraPermissions } =
   Platform.OS !== 'web'
@@ -107,18 +105,9 @@ function NativeCameraScreen() {
     }
   }, [isCapturing, createScan, startAnalysis]);
 
-  const handlePickFromGallery = useCallback(async () => {
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ['images'],
-      quality: 0.9,
-      allowsEditing: false,
-    });
-    if (result.canceled || !result.assets[0]?.uri) return;
-    const uri = result.assets[0].uri;
-    const scan = createScan(uri);
-    router.push({ pathname: '/result', params: { scanId: scan.id } });
-    startAnalysis(scan.id, uri);
-  }, [createScan, startAnalysis]);
+  const handlePickFromGallery = useCallback(() => {
+    router.push('/history');
+  }, []);
 
   if (!permission) {
     return (
@@ -227,8 +216,8 @@ function NativeCameraScreen() {
           style={styles.sideButton}
           onPress={handlePickFromGallery}
         >
-          <Text style={styles.sideButtonIcon}>🖼</Text>
-          <Text style={styles.sideButtonLabel}>Gallery</Text>
+          <Text style={styles.sideButtonIcon}>🗂</Text>
+          <Text style={styles.sideButtonLabel}>History</Text>
         </TouchableOpacity>
 
         <TouchableOpacity

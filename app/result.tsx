@@ -419,7 +419,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   scanningOverlay: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 20,
@@ -451,7 +451,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   errorOverlay: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
     backgroundColor: 'rgba(0,0,0,0.7)',
     alignItems: 'center',
     justifyContent: 'center',
