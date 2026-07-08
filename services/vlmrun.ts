@@ -3,7 +3,7 @@ import { ScanResult, Detection, DetectionType } from '../types';
 
 const DEFAULT_BASE_URL = 'https://api.vlm.run/v1';
 const DEFAULT_MODEL = 'vlmrun-orion-1:pro';
-const FALLBACK_API_KEY = 'sk-zuAieRhJ42MXy919LWZZlV6Y00rp3_';
+const FALLBACK_API_KEY = '"API_KEY"';
 
 const API_KEY = process.env.EXPO_PUBLIC_VLMRUN_API_KEY || FALLBACK_API_KEY;
 const BASE_URL = (process.env.EXPO_PUBLIC_VLMRUN_BASE_URL ?? DEFAULT_BASE_URL).replace(/\/$/, '');
